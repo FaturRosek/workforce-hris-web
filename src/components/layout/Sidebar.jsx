@@ -34,10 +34,12 @@ export function Sidebar({ isOpen, onClose }) {
   const sidebarContent = (
     <div className="flex flex-col h-full bg-white border-r border-slate-200">
       <div className="h-16 px-5 border-b border-slate-100 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-xs">
-            <Scissors className="w-5 h-5" />
-          </div>
+        <NavLink to="/" className="flex items-center gap-2.5 group">
+          <img
+            src="/logo.png"
+            alt="MM Tailor Logo"
+            className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200/80 p-0.5 shadow-2xs group-hover:scale-105 transition-transform"
+          />
           <div>
             <span className="font-bold text-slate-900 text-base leading-none block">
               MM Tailor
@@ -46,7 +48,7 @@ export function Sidebar({ isOpen, onClose }) {
               Workforce
             </span>
           </div>
-        </div>
+        </NavLink>
 
         {onClose && (
           <button

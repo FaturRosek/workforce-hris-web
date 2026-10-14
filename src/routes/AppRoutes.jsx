@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import AppLayout from '../components/layout/AppLayout'
 
+import Landing from '../pages/Landing'
 import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import CustomerList from '../pages/customers/CustomerList'
@@ -54,6 +55,8 @@ function PublicRoute({ children }) {
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Landing />} />
+
       <Route
         path="/login"
         element={
@@ -64,23 +67,22 @@ export function AppRoutes() {
       />
 
       <Route
-        path="/"
         element={
           <ProtectedRoute>
             <AppLayout />
           </ProtectedRoute>
         }
       >
-        <Route index element={<Navigate to="/dashboard" replace />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="customers" element={<CustomerList />} />
-        <Route path="orders" element={<OrderList />} />
-        <Route path="orders/new" element={<CreateOrder />} />
-        <Route path="orders/:id" element={<OrderDetail />} />
-        <Route path="payments" element={<PaymentList />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/customers" element={<CustomerList />} />
+        <Route path="/orders" element={<OrderList />} />
+        <Route path="/orders/new" element={<CreateOrder />} />
+        <Route path="/orders/:id" element={<OrderDetail />} />
+        <Route path="/payments" element={<PaymentList />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
