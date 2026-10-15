@@ -63,17 +63,14 @@ export function Login() {
         <div className="text-center mb-8">
           <Link to="/" className="inline-block group">
             <img
-              src="/logo.png"
+              src="/logo.jpg"
               alt="MM Tailor Logo"
               className="w-20 h-20 mx-auto mb-3 object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
             />
           </Link>
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-            MM Tailor Workforce
+            MM Tailor 
           </h2>
-          <p className="mt-1 text-sm text-slate-500">
-            Masuk ke sistem operasional order & HRIS
-          </p>
         </div>
 
         <div className="bg-white py-8 px-6 shadow-sm border border-slate-200/80 rounded-2xl sm:px-8">

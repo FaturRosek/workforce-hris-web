@@ -36,16 +36,13 @@ export function Sidebar({ isOpen, onClose }) {
       <div className="h-16 px-5 border-b border-slate-100 flex items-center justify-between shrink-0">
         <NavLink to="/" className="flex items-center gap-2.5 group">
           <img
-            src="/logo.png"
+            src="/logo.jpg"
             alt="MM Tailor Logo"
             className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200/80 p-0.5 shadow-2xs group-hover:scale-105 transition-transform"
           />
           <div>
             <span className="font-bold text-slate-900 text-base leading-none block">
               MM Tailor
-            </span>
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider block mt-0.5">
-              Workforce
             </span>
           </div>
         </NavLink>
