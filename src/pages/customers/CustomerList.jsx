@@ -8,6 +8,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  Eye,
 } from 'lucide-react'
 import customerApi from '../../api/customers'
 import { formatDate } from '../../utils/formatters'
@@ -22,6 +23,7 @@ import EmptyState from '../../components/ui/EmptyState'
 import ErrorState from '../../components/ui/ErrorState'
 import ConfirmDialog from '../../components/ui/ConfirmDialog'
 import CustomerModal from './CustomerModal'
+import CustomerDetailModal from './CustomerDetailModal'
 
 export function CustomerList() {
   const [customers, setCustomers] = useState([])
@@ -38,6 +40,9 @@ export function CustomerList() {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
+
+  const [isDetailOpen, setIsDetailOpen] = useState(false)
+  const [detailCustomer, setDetailCustomer] = useState(null)
 
   const [customerToDelete, setCustomerToDelete] = useState(null)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -94,6 +99,11 @@ export function CustomerList() {
   const handleOpenEdit = (customer) => {
     setSelectedCustomer(customer)
     setIsModalOpen(true)
+  }
+
+  const handleOpenDetail = (customer) => {
+    setDetailCustomer(customer)
+    setIsDetailOpen(true)
   }
 
   const handleDeleteConfirm = async () => {
@@ -208,7 +218,7 @@ export function CustomerList() {
                   <TableHeaderCell className="hidden lg:table-cell">
                     Tgl Terdaftar
                   </TableHeaderCell>
-                  <TableHeaderCell align="right" className="pr-6 w-28">
+                  <TableHeaderCell align="right" className="pr-6 w-32">
                     Aksi
                   </TableHeaderCell>
                 </TableRow>
@@ -217,13 +227,23 @@ export function CustomerList() {
                 {customers.map((c) => (
                   <TableRow key={c.id}>
                     <TableCell className="pl-6 font-semibold text-blue-700 text-xs">
-                      {c.customer_code || `CUS-${c.id}`}
+                      <button
+                        type="button"
+                        onClick={() => handleOpenDetail(c)}
+                        className="hover:underline font-mono text-left cursor-pointer"
+                      >
+                        {c.customer_code || `CUS-${c.id}`}
+                      </button>
                     </TableCell>
 
                     <TableCell>
-                      <div className="font-medium text-slate-900">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenDetail(c)}
+                        className="font-medium text-slate-900 hover:text-blue-600 transition-colors text-left cursor-pointer"
+                      >
                         {c.full_name}
-                      </div>
+                      </button>
                     </TableCell>
 
                     <TableCell>
@@ -267,6 +287,14 @@ export function CustomerList() {
                       <div className="flex items-center justify-end gap-1">
                         <button
                           type="button"
+                          onClick={() => handleOpenDetail(c)}
+                          className="p-1.5 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                          title="Lihat Detail Pelanggan"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
                           onClick={() => handleOpenEdit(c)}
                           className="p-1.5 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
                           title="Edit Pelanggan"
@@ -300,6 +328,16 @@ export function CustomerList() {
           </>
         )}
       </Card>
+
+      <CustomerDetailModal
+        isOpen={isDetailOpen}
+        onClose={() => setIsDetailOpen(false)}
+        customer={detailCustomer}
+        onEdit={(cust) => {
+          setSelectedCustomer(cust)
+          setIsModalOpen(true)
+        }}
+      />
 
       <CustomerModal
         isOpen={isModalOpen}

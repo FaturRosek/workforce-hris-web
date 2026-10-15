@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import {
   ShoppingBag,
   Search,
@@ -41,6 +41,10 @@ const STATUS_FILTERS = [
 ]
 
 export function OrderList() {
+  const [searchParams] = useSearchParams()
+  const initialSearch = searchParams.get('search') || ''
+  const initialStatus = searchParams.get('status') || 'All'
+
   const [orders, setOrders] = useState([])
   const [pagination, setPagination] = useState({
     page: 1,
@@ -48,9 +52,9 @@ export function OrderList() {
     total: 0,
     total_pages: 1,
   })
-  const [statusFilter, setStatusFilter] = useState('All')
-  const [searchTerm, setSearchTerm] = useState('')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [statusFilter, setStatusFilter] = useState(initialStatus)
+  const [searchTerm, setSearchTerm] = useState(initialSearch)
+  const [searchQuery, setSearchQuery] = useState(initialSearch)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 

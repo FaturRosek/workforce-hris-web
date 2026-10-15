@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import {
   ShoppingBag,
   Plus,
@@ -23,6 +23,7 @@ import Select from '../../components/ui/Select'
 
 export function CreateOrder() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { success, error: toastError } = useToast()
 
   const [customers, setCustomers] = useState([])
@@ -30,7 +31,9 @@ export function CreateOrder() {
   const [services, setServices] = useState([])
   const [isLoadingMaster, setIsLoadingMaster] = useState(true)
 
-  const [customerId, setCustomerId] = useState('')
+  const [customerId, setCustomerId] = useState(
+    () => searchParams.get('customer_id') || ''
+  )
   const [employeeId, setEmployeeId] = useState('')
   const [orderDate, setOrderDate] = useState(() => toInputDate(new Date()))
   const [pickupDate, setPickupDate] = useState(() => {
