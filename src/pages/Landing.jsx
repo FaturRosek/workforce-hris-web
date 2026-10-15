@@ -34,21 +34,18 @@ export function Landing() {
   const slides = [
     {
       image: '/images/hero.jpg',
-      badge: 'Tradisi & Keahlian Sejak 2014',
       title: 'Busana Kustom Elegan dengan Presisi Sempurna',
       description:
         'Penjahitan busana pria & wanita, setelan jas, dan seragam profesional dengan standar kualitas jahitan tinggi dan fitting akurat.',
     },
     {
       image: '/images/hero2.jpg',
-      badge: 'Material Pilihan & Jahitan Rapi',
       title: 'Sentuhan Tangan Pengrajin Busana Berpengalaman',
       description:
         'Setiap potongan kain diukur dan dijahit secara cermat mengikuti lekuk tubuh untuk kenyamanan dan penampilan maksimal.',
     },
     {
       image: '/images/hero3.jpg',
-      badge: 'Sistem Workforce HRIS Terintegrasi',
       title: 'Pemantauan Status Produksi Transparan & Tepat Waktu',
       description:
         'Ketahui progres pembuatan busana Anda dari tahap pengukuran, pemotongan, penjahitan, hingga siap diambil.',
@@ -134,16 +131,13 @@ export function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/logo.png"
+              src="/logo.jpg"
               alt="MM Tailor Logo"
               className="w-10 h-10 object-contain rounded-xl bg-white border border-slate-200 p-0.5 shadow-2xs group-hover:scale-105 transition-transform"
             />
             <div>
               <span className="text-lg font-bold text-slate-900 tracking-tight leading-none block">
                 MM Tailor
-              </span>
-              <span className="text-[11px] font-semibold text-blue-600 tracking-wider uppercase block mt-0.5">
-                Workforce System
               </span>
             </div>
           </Link>
@@ -203,11 +197,6 @@ export function Landing() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-white w-full">
           <div className="max-w-2xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              <span>{slides[currentSlide].badge}</span>
-            </div>
-
             <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white">
               {slides[currentSlide].title}
             </h1>
