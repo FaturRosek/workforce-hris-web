@@ -8,6 +8,7 @@ import {
   User,
   LogOut,
   Scissors,
+  BarChart3,
   X,
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
@@ -21,6 +22,8 @@ export function Sidebar({ isOpen, onClose }) {
     { to: '/orders', label: 'Orders', icon: ShoppingBag },
     { to: '/customers', label: 'Customers', icon: Users },
     { to: '/payments', label: 'Payments', icon: CreditCard },
+    { to: '/reports', label: 'Laporan', icon: BarChart3 },
+    { to: '/services', label: 'Layanan Jasa', icon: Scissors },
     { to: '/profile', label: 'Profil Saya', icon: User },
   ]
 

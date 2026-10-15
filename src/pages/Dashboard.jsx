@@ -10,6 +10,7 @@ import {
   Plus,
   ArrowRight,
   Filter,
+  BarChart3,
 } from 'lucide-react'
 import dashboardApi from '../api/dashboard'
 import orderApi from '../api/orders'
@@ -89,6 +90,11 @@ export function Dashboard() {
         subtitle="Ringkasan operasional dan performa bisnis MM Tailor"
         action={
           <div className="flex items-center gap-2">
+            <Link to="/reports">
+              <Button variant="outline" size="sm" icon={BarChart3}>
+                Lihat Laporan
+              </Button>
+            </Link>
             <Link to="/orders/new">
               <Button size="sm" icon={Plus}>
                 Buat Order Baru

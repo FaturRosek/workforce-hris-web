@@ -11,6 +11,8 @@ import OrderList from '../pages/orders/OrderList'
 import CreateOrder from '../pages/orders/CreateOrder'
 import OrderDetail from '../pages/orders/OrderDetail'
 import PaymentList from '../pages/payments/PaymentList'
+import Reports from '../pages/reports/Reports'
+import ServiceList from '../pages/services/ServiceList'
 import Profile from '../pages/profile/Profile'
 import NotFound from '../pages/NotFound'
 
@@ -79,6 +81,8 @@ export function AppRoutes() {
         <Route path="/orders/new" element={<CreateOrder />} />
         <Route path="/orders/:id" element={<OrderDetail />} />
         <Route path="/payments" element={<PaymentList />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/services" element={<ServiceList />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
 
